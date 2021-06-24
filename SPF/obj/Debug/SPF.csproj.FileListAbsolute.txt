@@ -1,0 +1,26 @@
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.Form1.resources
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.Properties.Resources.resources
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.csproj.GenerateResource.cache
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.csproj.CoreCompileInputs.cache
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\bin\Debug\SPF.exe.config
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\bin\Debug\SPF.exe
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\bin\Debug\SPF.pdb
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.csproj.CopyComplete
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.exe
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.pdb
+C:\Users\Jexel\Desktop\Universidad\Desarrollo de software Proyecto\SPF\SPF\obj\Debug\SPF.csprojAssemblyReference.cache
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\bin\Debug\SPF.exe.config
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\bin\Debug\SPF.exe
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\bin\Debug\SPF.pdb
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.csprojAssemblyReference.cache
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.Form1.resources
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.Properties.Resources.resources
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.csproj.GenerateResource.cache
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.csproj.CoreCompileInputs.cache
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.csproj.CopyComplete
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.exe
+C:\Users\Jexel\Desktop\Administrador-de-comercio-master\SPF\SPF\obj\Debug\SPF.pdb
