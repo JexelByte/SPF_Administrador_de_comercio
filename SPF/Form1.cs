@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.VisualBasic;
 
 namespace SPF
 {
@@ -28,7 +29,7 @@ namespace SPF
             }
         }
 
-        string empleado = "";
+        string empleado = "Admin";
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -55,7 +56,8 @@ namespace SPF
                 if (a.usuario == textBox2.Text && a.contraseña == Contraseña.Text)
                 {
                     this.FormBorderStyle = FormBorderStyle.Sizable;
-                    this.Size = new Size(800, 480);
+                    this.Size = new Size(820, 510);
+                    this.MinimumSize = new Size(800, 510);
                     panel2.Visible = true;
                     panel2.Enabled = true;
 
@@ -206,6 +208,14 @@ namespace SPF
 
             listBox1.Items.Clear();
 
+            nombre.Text = "";
+            cedula.Text = "";
+            Departamento.Text = "";
+            cargo.Text = "";
+            usuario.Text = "";
+            key.Text = "";
+            keyRepeat.Text = "";
+
             foreach (Trabajador t in listr)
             {
                 listBox1.Items.Add(t.Nombre_Completo + " - " + t.Cedula + " - " + t.Departamento + " - " + t.Cargo);
@@ -258,7 +268,6 @@ namespace SPF
             Agregar_Producto.Visible = true;
             Agregar_Producto.Dock = DockStyle.Fill;
             Agregar_Producto.BringToFront();
-            List<Producto> lisp;
 
             if (File.Exists("DB/PD.jex"))
             {
@@ -273,6 +282,9 @@ namespace SPF
             }
         }
 
+
+        List<Producto> lisp;
+
         private void button7_Click(object sender, EventArgs e)
         {
             if (Nombre_p.Text != "" && marca_p.Text != "" && pvp.Text != "" && pcp.Text != "")
@@ -285,7 +297,7 @@ namespace SPF
                 p.Precio_venta = Convert.ToDouble(pvp.Text);
                 p.Precio_Compra = Convert.ToDouble( pcp.Text );
 
-                List<Producto> lisp;
+                p.cantidad = 0;
                 
                 if (File.Exists("DB/PD.jex"))
                 {
@@ -317,6 +329,11 @@ namespace SPF
                 }
 
                 MessageBox.Show("Se ah guardado correctamente", "Operacion Exitosa");
+
+                Nombre_p.Text = "";
+                marca_p.Text = "";
+                pvp.Text = "";
+                pcp.Text = "";
 
                 lista_p.Items.Clear();
 
@@ -366,6 +383,16 @@ namespace SPF
             }
         }
 
+        private void lista_p_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Producto p in lisp)
+            {
+                if ((p.Nombre + " - " + p.Marca) == lista_p.Text)
+                {
+                    richTextBox3.Text = "Nombre: " + p.Nombre + "\nMarca: " + p.Marca + "\nPrecio de compra: " + p.Precio_Compra + "\nPrecio de venta: " + p.Precio_venta + "\nCantidad: " + p.cantidad;
+                }
+            }
+        }
 
         //                  Distribuidores!                        **********************************************************
 
@@ -433,6 +460,11 @@ namespace SPF
                 }
 
                 MessageBox.Show("Se ah guardado correctamente", "Operacion Exitosa");
+
+                Nombre_D.Text = "";
+                Telefono_D.Text = "";
+                Direccion_D.Text = "";
+                Rif_D.Text = "";
 
                 lista_D.Items.Clear();
 
@@ -575,7 +607,7 @@ namespace SPF
                         compra1 cm = new compra1();
                         cm.producto = p;
                         cm.cantidad = Convert.ToInt32(numericUpDown1.Value);
-
+                        
                         numericUpDown1.Value = 0;
 
                         foreach (compra1 i in compra)
@@ -614,6 +646,11 @@ namespace SPF
 
         private void button15_Click(object sender, EventArgs e)
         {
+            if (listBox2.Items.Count <= 0)
+            {
+                return;
+            }
+
             Factura_Compra Fc = new Factura_Compra();
 
             Fc.fecha = DateTime.Now;
@@ -637,6 +674,48 @@ namespace SPF
 
                 lisf.Add(Fc);
 
+                try
+                {
+                    foreach (compra1 i in Fc.productos)
+                    {
+                        foreach (Producto p in lisp)
+                        {
+                            if (i.producto.Nombre + i.producto.Marca == p.Nombre + p.Marca)
+                            {
+                                p.cantidad += i.cantidad;
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    lisp = JsonConvert.DeserializeObject<List<Producto>>(File.ReadAllText("DB/PD.jex"));
+
+                    foreach (compra1 i in Fc.productos)
+                    {
+                        foreach (Producto p in lisp)
+                        {
+                            if (i.producto.Nombre + i.producto.Marca == p.Nombre + p.Marca)
+                            {
+                                p.cantidad += i.cantidad;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                try
+                {
+                    File.WriteAllText("DB/PD.jex", JsonConvert.SerializeObject(lisp));
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Errores al guardar los cambios", "Error");
+                    return;
+                }
+                
                 try
                 {
                     File.WriteAllText("DB/FC.jex", JsonConvert.SerializeObject(lisf));
@@ -718,8 +797,7 @@ namespace SPF
         }
 
         //                       Vender                            **************************************************************
-
-        List<Producto> Vp;
+        
 
         List<compra1> Cp = new List<compra1>();
         
@@ -732,11 +810,11 @@ namespace SPF
 
             if (File.Exists("DB/PD.jex"))
             {
-                Vp = JsonConvert.DeserializeObject<List<Producto>>(File.ReadAllText("DB/PD.jex"));
+                lisp = JsonConvert.DeserializeObject<List<Producto>>(File.ReadAllText("DB/PD.jex"));
 
                 listBox3.Items.Clear();
 
-                foreach (Producto item in Vp)
+                foreach (Producto item in lisp)
                 {
                     listBox3.Items.Add(item.Nombre + " - " + item.Marca);
                 }
@@ -747,7 +825,7 @@ namespace SPF
         {
             listBox3.Items.Clear();
 
-            foreach (Producto t in Vp)
+            foreach (Producto t in lisp)
             {
                 if (t.Nombre.Contains(textBox4.Text) || t.Marca.Contains(textBox4.Text))
                 {
@@ -758,11 +836,11 @@ namespace SPF
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (Producto t in Vp)
+            foreach (Producto t in lisp)
             {
                 if (t.Nombre + " - " + t.Marca == listBox3.Text)
                 {
-                    richTextBox1.Text = "Nombre: " + t.Nombre + "\n Marca: " + t.Marca + "\n Precio de Venta: " + t.Precio_venta;
+                    richTextBox1.Text = "Nombre: " + t.Nombre + "\n Marca: " + t.Marca + "\n Precio de Venta: " + t.Precio_venta + "\n Disponibilidad: " + t.cantidad;
                     break;
                 }
             }
@@ -772,7 +850,7 @@ namespace SPF
         {
             compra1 c = new compra1();
 
-            foreach (Producto t in Vp)
+            foreach (Producto t in lisp)
             {
                 if (t.Nombre + " - " + t.Marca == listBox3.Text)
                 {
@@ -823,6 +901,7 @@ namespace SPF
             fc.cliente = cliente.Text;
 
             List<Factura> fac;
+            
 
             if (File.Exists("DB/FV.jex"))
             {
@@ -834,6 +913,48 @@ namespace SPF
             }
 
             fac.Add(fc);
+
+            try
+            {
+                foreach (compra1 i in fc.productos)
+                {
+                    foreach (Producto p in lisp)
+                    {
+                        if (i.producto.Nombre + i.producto.Marca == p.Nombre + p.Marca)
+                        {
+                            p.cantidad -= i.cantidad;
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                lisp = JsonConvert.DeserializeObject<List<Producto>>(File.ReadAllText("DB/PD.jex"));
+
+                foreach (compra1 i in fc.productos)
+                {
+                    foreach (Producto p in lisp)
+                    {
+                        if (i.producto.Nombre + i.producto.Marca == p.Nombre + p.Marca)
+                        {
+                            p.cantidad -= i.cantidad;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            try
+            {
+                File.WriteAllText("DB/PD.jex", JsonConvert.SerializeObject(lisp));
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Errores al guardar los cambios", "Error");
+                return;
+            }
 
             if (MessageBox.Show("Asegurese de que todos los datos son correctos antes de proceder. \n ¿Proceder?","¡Alerta!",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -913,6 +1034,95 @@ namespace SPF
 
 
                     break;
+                }
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            Configuracion.Dock = DockStyle.Fill;
+            Configuracion.BringToFront();
+            Configuracion.Visible = true;
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            Admin a = JsonConvert.DeserializeObject<Admin>(File.ReadAllText("DB/DATABASE.jex"));
+            
+            if (a.contraseña == Interaction.InputBox("Esta accion requiere la contraseña del administrador"))
+            {
+                respaldo r = new respaldo();
+                r.resp = new List<string>();
+
+                r.resp.Add(File.ReadAllText("DB/DATABASE.jex"));
+                r.resp.Add(File.ReadAllText("DB/Dsp.jex"));
+                r.resp.Add(File.ReadAllText("DB/FC.jex"));
+                r.resp.Add(File.ReadAllText("DB/FV.jex"));
+                r.resp.Add(File.ReadAllText("DB/PD.jex"));
+                r.resp.Add(File.ReadAllText("DB/TR.jex"));
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(saveFileDialog1.FileName, JsonConvert.SerializeObject(r));
+                }
+            }
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                respaldo crg = JsonConvert.DeserializeObject<respaldo>(File.ReadAllText(openFileDialog1.FileName));
+
+                Admin ad = JsonConvert.DeserializeObject<Admin>(crg.resp[0]);
+
+                if (ad.contraseña == Interaction.InputBox("Se requiere la contraseña del administrador de este respaldo"))
+                {
+                    Admin a = JsonConvert.DeserializeObject<Admin>(File.ReadAllText("DB/DATABASE.jex"));
+
+                    if (a.contraseña == Interaction.InputBox("Esta accion requiere la contraseña del administrador"))
+                    {
+                        if (MessageBox.Show("¿Desea reemplazar su base de datos actual por esta otra?", "!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            File.WriteAllText("DB/Dsp.jex", crg.resp[1]);
+                            File.WriteAllText("DB/FC.jex", crg.resp[2]);
+                            File.WriteAllText("DB/FV.jex", crg.resp[3]);
+                            File.WriteAllText("DB/PD.jex", crg.resp[4]);
+                            File.WriteAllText("DB/TR.jex", crg.resp[5]);
+                        }
+                        else if (MessageBox.Show("¿Sesea combinar esta base de datos con su base de datos actual?", "!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            Admin ad = JsonConvert.DeserializeObject<Admin>(File.ReadAllText("DB/DATABASE.jex"));
+
+            if (ad.contraseña == Interaction.InputBox("Se requiere la contraseña actual del administrador"))
+            {
+                string nk = Interaction.InputBox("Escriba la nueva contaseña");
+
+                if (nk != "")
+                {
+                    if (nk == Interaction.InputBox("Repita la nueva contaseña"))
+                    {
+                        ad.contraseña = nk;
+
+                        File.WriteAllText("DB/DATABASE.jex", JsonConvert.SerializeObject(ad));
+
+                        MessageBox.Show("Operacion realizada con exito, se reiniciará la aplicacion!", "!");
+
+                        Application.Restart();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Las contraseñas proporcionadas no coinciden", "!");
+                    }
                 }
             }
         }
