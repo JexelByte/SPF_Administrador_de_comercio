@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.Back = new System.Windows.Forms.Panel();
+            this.Configuracion = new System.Windows.Forms.Panel();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.Compras = new System.Windows.Forms.Panel();
             this.MontoTotalCompra = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -128,13 +132,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Configuracion = new System.Windows.Forms.Panel();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button23 = new System.Windows.Forms.Button();
             this.Back.SuspendLayout();
+            this.Configuracion.SuspendLayout();
             this.Compras.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.Distribuidores.SuspendLayout();
@@ -147,7 +148,6 @@
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.Configuracion.SuspendLayout();
             this.SuspendLayout();
             // 
             // Back
@@ -166,6 +166,71 @@
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(1097, 569);
             this.Back.TabIndex = 0;
+            // 
+            // Configuracion
+            // 
+            this.Configuracion.Controls.Add(this.button23);
+            this.Configuracion.Controls.Add(this.button22);
+            this.Configuracion.Controls.Add(this.button21);
+            this.Configuracion.Location = new System.Drawing.Point(49, 25);
+            this.Configuracion.Name = "Configuracion";
+            this.Configuracion.Size = new System.Drawing.Size(717, 509);
+            this.Configuracion.TabIndex = 1;
+            this.Configuracion.Visible = false;
+            // 
+            // button23
+            // 
+            this.button23.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button23.FlatAppearance.BorderSize = 2;
+            this.button23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
+            this.button23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.ForeColor = System.Drawing.Color.Black;
+            this.button23.Location = new System.Drawing.Point(-9, 152);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(372, 50);
+            this.button23.TabIndex = 0;
+            this.button23.Text = "Cambiar contraseña de administrador";
+            this.button23.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // button22
+            // 
+            this.button22.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button22.FlatAppearance.BorderSize = 2;
+            this.button22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
+            this.button22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button22.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button22.ForeColor = System.Drawing.Color.Black;
+            this.button22.Location = new System.Drawing.Point(-9, 88);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(372, 50);
+            this.button22.TabIndex = 0;
+            this.button22.Text = "Cargar respaldo";
+            this.button22.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button21
+            // 
+            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button21.FlatAppearance.BorderSize = 2;
+            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
+            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button21.ForeColor = System.Drawing.Color.Black;
+            this.button21.Location = new System.Drawing.Point(-9, 24);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(311, 50);
+            this.button21.TabIndex = 0;
+            this.button21.Text = "Crear respaldo";
+            this.button21.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // Compras
             // 
@@ -649,7 +714,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox2.Location = new System.Drawing.Point(401, 5);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(347, 77);
+            this.richTextBox2.Size = new System.Drawing.Size(347, 94);
             this.richTextBox2.TabIndex = 4;
             this.richTextBox2.Text = "";
             // 
@@ -668,7 +733,7 @@
             this.listBox6.FormattingEnabled = true;
             this.listBox6.Location = new System.Drawing.Point(60, 31);
             this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(335, 43);
+            this.listBox6.Size = new System.Drawing.Size(335, 56);
             this.listBox6.TabIndex = 2;
             this.listBox6.SelectedIndexChanged += new System.EventHandler(this.listBox6_SelectedIndexChanged);
             // 
@@ -1344,55 +1409,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Usuario";
             // 
-            // Configuracion
-            // 
-            this.Configuracion.Controls.Add(this.button23);
-            this.Configuracion.Controls.Add(this.button22);
-            this.Configuracion.Controls.Add(this.button21);
-            this.Configuracion.Location = new System.Drawing.Point(49, 25);
-            this.Configuracion.Name = "Configuracion";
-            this.Configuracion.Size = new System.Drawing.Size(717, 509);
-            this.Configuracion.TabIndex = 1;
-            this.Configuracion.Visible = false;
-            // 
-            // button21
-            // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button21.FlatAppearance.BorderSize = 2;
-            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
-            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.ForeColor = System.Drawing.Color.Black;
-            this.button21.Location = new System.Drawing.Point(-11, 84);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(311, 50);
-            this.button21.TabIndex = 0;
-            this.button21.Text = "Crear respaldo";
-            this.button21.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
-            // 
-            // button22
-            // 
-            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button22.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button22.FlatAppearance.BorderSize = 2;
-            this.button22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
-            this.button22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.ForeColor = System.Drawing.Color.Black;
-            this.button22.Location = new System.Drawing.Point(-11, 168);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(372, 50);
-            this.button22.TabIndex = 0;
-            this.button22.Text = "Cargar respaldo";
-            this.button22.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button22.UseVisualStyleBackColor = true;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
-            // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.FileName = "RES.jex";
@@ -1402,25 +1418,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Jex Files | *.jex";
-            // 
-            // button23
-            // 
-            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button23.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button23.FlatAppearance.BorderSize = 2;
-            this.button23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Navy;
-            this.button23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.ForeColor = System.Drawing.Color.Black;
-            this.button23.Location = new System.Drawing.Point(-11, 248);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(372, 50);
-            this.button23.TabIndex = 0;
-            this.button23.Text = "Cambiar contraseña de administrador";
-            this.button23.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // Form1
             // 
@@ -1436,6 +1433,7 @@
             this.Name = "Form1";
             this.Text = "Admin";
             this.Back.ResumeLayout(false);
+            this.Configuracion.ResumeLayout(false);
             this.Compras.ResumeLayout(false);
             this.Compras.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -1455,7 +1453,6 @@
             this.Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.Configuracion.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

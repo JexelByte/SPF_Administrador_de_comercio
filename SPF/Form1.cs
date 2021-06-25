@@ -81,6 +81,7 @@ namespace SPF
                             button3.Enabled = false;
                             button13.Enabled = false;
                             button9.Enabled = false;
+                            button20.Enabled = false;
 
                             empleado = t.Cedula;
 
